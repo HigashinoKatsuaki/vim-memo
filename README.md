@@ -23,15 +23,7 @@ make
 - 'background=dark'  ダークモード的なやつ？（たぶん、知らんけど）  
 - 'belloff=all' 警告音をオフにする  
 - 'cindent'  
-  - Cプログラムファイルの自動インデントを行う。挿入モードで再インデントを
-  引き起こす文字列を指定するにはオプション 'cinkeys' を、好みのインデン
-  トスタイルを設定するには 'cinoptions' を参照。
-  'indentexpr' の値が空でないなら、それは 'cindent' の設定を上書きする。
-  'lisp' がオフで、'indentexpr' と 'equalprg' の両方の値が空なら、"=" に
-  よるインデントはこのアルゴリズムを使い、外部プログラムを使わない。
-  C-indenting を参照。
-  'cindent' の動作が気に入らないならば、'smartindent' か 'indentexpr' を
-  試してみること。(vim日本語ドキュメント原文ママ）
+  - Cプログラムファイルの自動インデントを行う。挿入モードで再インデントを引き起こす文字列を指定するにはオプション 'cinkeys' を、好みのインデントスタイルを設定するには 'cinoptions' を参照。'indentexpr' の値が空でないなら、それは 'cindent' の設定を上書きする。'lisp' がオフで、'indentexpr' と 'equalprg' の両方の値が空なら、"=" によるインデントはこのアルゴリズムを使い、外部プログラムを使わない。C-indenting を参照。'cindent' の動作が気に入らないならば、'smartindent' か 'indentexpr' を試してみること。(vim日本語ドキュメント原文ママ）
 - 'clipboard=unnamed' 無名レジスタじゃなくてクリップボード使うやつ
 - 'complete' キーワード検索の対象となる範囲を設定できる  
 - 'encoding' エンコード指定  
