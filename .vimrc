@@ -96,6 +96,7 @@ set list
 set wildmenu
 " コピーデータのインデントをコピーデータと統一
 set paste
+set mouse+=a
 
 " 初期でNERDTreeを表示
 let g:NERDTreeShowBookmarks=1
