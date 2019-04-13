@@ -25,6 +25,7 @@ Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
 Plug 'craigemery/vim-autotag'
 Plug 'Townk/vim-autoclose'
+Plug 'rking/ag.vim'
 call plug#end()
 
 inoremap jj <Esc>

@@ -32,3 +32,11 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent
 - 'expandtab' tabを空白にする  
 -j 'fileignorecase' ファイル名の大文字小文字を区別しない
 
+## Plugin install
+:PlugInstall
+:PlugStatus
+
+### ag install
+$ rpm -ivh http://swiftsignal.com/packages/centos/6/x86_64/the-silver-searcher-0.14-1.el6.x86_64.rpm
+# or 
+$ rpm -ivh http://swiftsignal.com/packages/centos/6/i386/the-silver-searcher-0.14-1.el6.i686.rpm
