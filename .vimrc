@@ -35,6 +35,8 @@ Plug 'thinca/vim-ref'
 Plug 'yuku-t/vim-ref-ri'
 Plug 'szw/vim-tags'
 Plug 'thinca/vim-quickrun'
+Plug 'altercation/vim-colors-solarized'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 inoremap jj <Esc>
@@ -185,3 +187,17 @@ let g:quickrun_config._ = {
       \ 'outputter/buffer/split'  : ':rightbelow 8sp',
       \ 'outputter/buffer/close_on_empty' : 1,
       \ }
+nnoremap <silent>run :QuickRun<CR>
+
+" gitgutter
+" 目印行を常に表示する
+if exists('&signcolumn')  " Vim 7.4.2201
+  set signcolumn=yes
+else
+  let g:gitgutter_sign_column_always = 1
+endif
+
+" colorscheme
+" set background=light
+" colorscheme solarized
+
