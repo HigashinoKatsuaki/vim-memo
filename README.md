@@ -40,3 +40,21 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent
 $ rpm -ivh http://swiftsignal.com/packages/centos/6/x86_64/the-silver-searcher-0.14-1.el6.x86_64.rpm
 # or 
 $ rpm -ivh http://swiftsignal.com/packages/centos/6/i386/the-silver-searcher-0.14-1.el6.i686.rpm
+
+### ruby補完
+- rsense rubocop refe2 (3つともgemで)インストール
+- ctag(brew, yum) インストール
+
+temirnalにて ctag -R 実行
+### インデント設定
+~/.vim/indent/ruby.vimo"  
+~~~
+tabstop: TABキーに対応する空白数を設定
+" shiftwidth: 自動インデントや"<<"、">>"で動く幅の設定
+" softtabstop: TABキーやBSキーを打ち込んだときに動く幅の設定
+setlocal tabstop=2 shiftwidth=2 softtabstop=2
+~~~
+
+
+
+
