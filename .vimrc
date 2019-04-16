@@ -1,6 +1,7 @@
 call plug#begin()
 Plug 'Shougo/unite.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-fugitive'
 Plug 'thinca/vim-visualstar'
 Plug 'kien/ctrlp.vim'
@@ -47,7 +48,10 @@ Plug 'w0rp/ale'
 Plug 'KeitaNakamura/neodark.vim'
 call plug#end()
 
-inoremap jj <Esc>
+inoremap jj <Esc>:w<CR>
+inoremap <Esc> <Esc>:w<CR>
+nnoremap <silent>noh :noh<CR>
+
 set clipboard+=unnamed
 " setting
 "文字コードをUFT-8に設定
@@ -117,7 +121,14 @@ set tabstop=2
 
 " 初期でNERDTreeを表示
 let g:NERDTreeShowBookmarks=1
+" 隠しファイルを表示
+let NERDTreeShowHidden = 1
+" tab間でNERDTreeを共有
+if argc() == 0
+  let g:nerdtree_tabs_open_on_console_startup = 1
+endif
 nnoremap <silent>dir :NERDTreeToggle<CR>
+
 
 "" unite-grep {{{
 " unite-grepのバックエンドをagに切り替える
@@ -215,6 +226,7 @@ colorscheme neodark
 let g:neodark#terminal_transparent = 1 " default: 0
 
 " ctrlp
+nnoremap <silent> f :CtrlP<CR>
 set wildignore+=*/.git/*,        " Linux/MacOSX
 let g:ctrlp_custom_ignore = 'node_modules\|vender\|vendor\|.bundle\|DS_Store\|git'
 
