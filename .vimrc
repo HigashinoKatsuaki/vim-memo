@@ -19,7 +19,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/AnsiEsc.vim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'airblade/vim-gitgutter'
-Plug 'pangloss/vim-javascript'
 Plug 'easymotion/vim-easymotion'
 Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
@@ -28,8 +27,6 @@ Plug 'Townk/vim-autoclose'
 Plug 'rking/ag.vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'marcus/rsense'
-Plug 'Shougo/neocomplcache-rsense.vim'
-Plug 'supermomonga/neocomplete-rsense.vim'
 Plug 'scrooloose/syntastic'
 Plug 'thinca/vim-ref'
 Plug 'yuku-t/vim-ref-ri'
@@ -37,6 +34,17 @@ Plug 'szw/vim-tags'
 Plug 'thinca/vim-quickrun'
 Plug 'altercation/vim-colors-solarized'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/es.next.syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'posva/vim-vue'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'ianks/vim-tsx'
+Plug 'w0rp/ale'
+Plug 'KeitaNakamura/neodark.vim'
 call plug#end()
 
 inoremap jj <Esc>
@@ -141,17 +149,20 @@ let g:rsenseUseOmniFunc = 1
 " --------------------------------
 " rubocop
 " --------------------------------
-let g:syntastic_ruby_checkers = ['rubocop']
+" let g:syntastic_ruby_checkers = ['rubocop']
 
 let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -R {OPTIONS} {DIRECTORY} 2>/dev/null"
 let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R {OPTIONS} `bundle show --paths` 2>/dev/null"
 " ファイルタイプ毎 & gitリポジトリ毎にtagsの読み込みpathを変える
 function! ReadTags(type)
-    let l:t = a:type 
+    let t = a:type 
     if a:type == 'typescript'
       let t = 'js'
     endif
     if a:type == 'javascript.jsx'
+      let t = 'js'
+    endif
+    if a:type == 'typescript.tsx'
       let t = 'js'
     endif
     try
@@ -168,12 +179,12 @@ augroup END
 
 " syntax
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 1
 
 
 " quickrun
@@ -198,6 +209,12 @@ else
 endif
 
 " colorscheme
-" set background=light
+set background=dark
 " colorscheme solarized
+colorscheme neodark
+let g:neodark#terminal_transparent = 1 " default: 0
+
+" ctrlp
+set wildignore+=*/.git/*,        " Linux/MacOSX
+let g:ctrlp_custom_ignore = 'node_modules\|vender\|vendor\|.bundle\|DS_Store\|git'
 
