@@ -51,7 +51,6 @@ Plug 'thinca/vim-quickrun'
 Plug 'altercation/vim-colors-solarized'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx'] }
 Plug 'othree/es.next.syntax.vim', { 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx'] }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx'] }
@@ -121,7 +120,7 @@ set wrapscan
 set hlsearch
 " 行数 列数表示
 set ruler
-" 警告音をオフにする  
+" 警告音をオフにする
 set belloff=all
 " コマンドラインに使われる画面上の行数
 set cmdheight=2
@@ -135,20 +134,20 @@ set wildmenu
 " コピーデータのインデントをコピーデータと統一
 set mouse+=a
 " Tab系
-" Tab文字を半角スペースにする
-set expandtab
-" 行頭以外のTab文字の表示幅（スペースいくつ分）
-set softtabstop=2
-" 行頭でのTab文字の表示幅
 "ファイルタイプの検索を有効にする
 filetype plugin on
 "ファイルタイプに合わせたインデントを利用
 filetype indent on
+" Tab文字を半角スペースにする
+set expandtab
 "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
 set shiftwidth=2
+" 行頭でのTab文字の表示幅
 set tabstop=2
+" 行頭以外のTab文字の表示幅（スペースいくつ分）
+set softtabstop=2
 autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
-autocmd FileType go           setlocal sw=4 sts=4 ts=4 et
+autocmd FileType go          setlocal sw=4 sts=4 ts=4 et
 autocmd FileType python      setlocal sw=4 sts=4 ts=4 et
 autocmd FileType scala       setlocal sw=4 sts=4 ts=4 et
 " check one time after 4s of inactivity in normal mode
@@ -406,7 +405,7 @@ command! SyntaxInfo call s:get_syn_info()
 " typescript colorscheme change
 autocmd ColorScheme * highlight typescriptMember ctermfg=217
 autocmd ColorScheme * highlight typescriptClassName ctermfg=229
-autocmd ColorScheme * highlight Comment ctermfg=154
+autocmd ColorScheme * highlight Comment ctermfg=71
 
 " colorscheme
 set background=dark
@@ -428,11 +427,12 @@ let g:ale_sign_warning = '⚠'
 let g:ale_linters = {
       \ 'html': [],
       \ 'css': ['stylelint'],
-      \ 'javascript': ['eslint', 'tsserver'],
-      \ 'javascript.jsx': ['eslint', 'tsserver'],
+      \ 'javascript': ['eslint'],
+      \ 'javascript.tsx': ['eslint'],
       \ 'typescript': ['tslint', 'tsserver'],
       \ 'typescript.tsx': ['tslint', 'tsserver'],
       \ 'ruby': ['rubocop', 'solargraph', 'ruby'],
+      \ 'go': ['gopls'],
       \ }
 
 
@@ -441,3 +441,8 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=8
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=0
+
+" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_gocode_unimported_packages = 1
+nnoremap <Space>it :GoImport 
